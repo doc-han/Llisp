@@ -11,7 +11,11 @@ enum TokenType
     NUMBER_LITERAL,
     ARITHMETIC,
     VARIABLE,
-    RESERVED_KEYWORD
+    RESERVED_KEYWORD,
+    ADDITION = '+',
+    SUBTRACTION = '-',
+    DIVISION = '/',
+    MULTIPLICATION = '*'
 };
 
 enum Numbers
@@ -42,7 +46,7 @@ enum Alphabet
     j = 'j',
     k = 'k',
     l = 'l',
-    m = 'm', 
+    m = 'm',
     n = 'n',
     o = 'o',
     p = 'p',
@@ -58,13 +62,13 @@ enum Alphabet
     z = 'z'
 };
 
-enum Arithmetics
-{
-    ADDITION = '+',
-    SUBTRACTION = '-',
-    DIVISION = '/',
-    MULTIPLICATION = '*'
-};
+// enum Arithmetics
+// {
+//     ADDITION = '+',
+//     SUBTRACTION = '-',
+//     DIVISION = '/',
+//     MULTIPLICATION = '*'
+// };
 
 const int reservedKeywordsSize = 5;
 
@@ -75,6 +79,18 @@ public:
     std::string token_value;
     Token(std::string value, TokenType type);
     Token();
+
+    Token operator+(const Token &other_token)
+    {
+        Token token;
+        if (this->token_type == TokenType::NUMBER_LITERAL && other_token.token_type == TokenType::NUMBER_LITERAL)
+        {
+            long double ans = std::stoi(this->token_value) + std::stoi(other_token.token_value);
+            token.token_type = TokenType::NUMBER_LITERAL;
+            token.token_value = std::to_string(ans);
+            return token;
+        }
+    }
 };
 
 typedef std::vector<Token> token_vector;
