@@ -164,14 +164,38 @@ token_vector Tokenizer::tokenize(std::string source_code)
             pos = next;
             break;
         }
-        case Arithmetics::ADDITION:
-        case Arithmetics::SUBTRACTION:
-        case Arithmetics::DIVISION:
-        case Arithmetics::MULTIPLICATION:
+        case TokenType::ADDITION:
         {
             next++;
             std::string arithmeticStr(1, currC);
-            Token tk(arithmeticStr, TokenType::ARITHMETIC);
+            Token tk(arithmeticStr, TokenType::ADDITION);
+            tokens.push_back(tk);
+            pos = next;
+            break;
+        }
+        case TokenType::SUBTRACTION:
+        {
+            next++;
+            std::string arithmeticStr(1, currC);
+            Token tk(arithmeticStr, TokenType::SUBTRACTION);
+            tokens.push_back(tk);
+            pos = next;
+            break;
+        }
+        case TokenType::DIVISION:
+        {
+            next++;
+            std::string arithmeticStr(1, currC);
+            Token tk(arithmeticStr, TokenType::DIVISION);
+            tokens.push_back(tk);
+            pos = next;
+            break;
+        }
+        case TokenType::MULTIPLICATION:
+        {
+            next++;
+            std::string arithmeticStr(1, currC);
+            Token tk(arithmeticStr, TokenType::MULTIPLICATION);
             tokens.push_back(tk);
             pos = next;
             break;
