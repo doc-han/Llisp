@@ -1,0 +1,11 @@
+<page> = <body> | <declaration> | <body>|<declaration>
+<body> = '(' <function> <variable>|<digit> <variable>|<digit> | <declaration> ')'
+<declaration> = 'setq' `' '` <variable> `' '` <digit>|<variable>
+<variable> = <alphabet> | <alphabet><digit>
+<alphabet> = 'a' | ... | 'z'
+<digit> = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 
+
+put 5 into han
+add 7 to han
+
+go from 1 to han add 1
