@@ -1,0 +1,15 @@
+The current directory contains the source code for the Little LISP compiler.
+The generated executable file lives in the ./bin folder as littlelisp.exe.
+
+HOW TO RUN A LITTLE LISP CODE.
+Create a file with the extension .llisp and then write your source code. 
+
+Example source code
+(setq width 5)
+(setq breadth 8)
+(* width breadth)
+
+when done, open the terminal, run the executable and pass your filename as an argument to the executable. 
+Example. If your code was saved as calc_area.llisp, Then your command will be as below
+
+./littlelisp calc_area.llisp

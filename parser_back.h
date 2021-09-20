@@ -1,7 +1,7 @@
 #ifndef PARSER_H
 #define PARSER_H
 #include "tokenizer.h"
-#include <unordered_map>
+#include <vector>
 
 enum NodeType 
 {
@@ -31,8 +31,6 @@ class BodyNode {
 
 class Parser {
   public:
-    Token getToken(std::vector<Token> token_vector, int &curr, int &next);
-    std::unordered_map<std::string, int> variables;
     std::vector<Node*> parse(std::vector<Token> token_vector);
 };
 

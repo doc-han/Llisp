@@ -85,11 +85,48 @@ public:
         Token token;
         if (this->token_type == TokenType::NUMBER_LITERAL && other_token.token_type == TokenType::NUMBER_LITERAL)
         {
-            long double ans = std::stoi(this->token_value) + std::stoi(other_token.token_value);
+            int ans = std::stoi(this->token_value) + std::stoi(other_token.token_value);
             token.token_type = TokenType::NUMBER_LITERAL;
             token.token_value = std::to_string(ans);
             return token;
         }
+        return token;
+    }
+    Token operator-(const Token &other_token)
+    {
+        Token token;
+        if (this->token_type == TokenType::NUMBER_LITERAL && other_token.token_type == TokenType::NUMBER_LITERAL)
+        {
+            int ans = std::stoi(this->token_value) - std::stoi(other_token.token_value);
+            token.token_type = TokenType::NUMBER_LITERAL;
+            token.token_value = std::to_string(ans);
+            return token;
+        }
+        return token;
+    }
+    Token operator/(const Token &other_token)
+    {
+        Token token;
+        if (this->token_type == TokenType::NUMBER_LITERAL && other_token.token_type == TokenType::NUMBER_LITERAL)
+        {
+            int ans = std::stoi(this->token_value) / std::stoi(other_token.token_value);
+            token.token_type = TokenType::NUMBER_LITERAL;
+            token.token_value = std::to_string(ans);
+            return token;
+        }
+        return token;
+    }
+    Token operator*(const Token &other_token)
+    {
+        Token token;
+        if (this->token_type == TokenType::NUMBER_LITERAL && other_token.token_type == TokenType::NUMBER_LITERAL)
+        {
+            int ans = std::stoi(this->token_value) * std::stoi(other_token.token_value);
+            token.token_type = TokenType::NUMBER_LITERAL;
+            token.token_value = std::to_string(ans);
+            return token;
+        }
+        return token;
     }
 };
 

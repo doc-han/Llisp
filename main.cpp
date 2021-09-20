@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <fstream>
 #include "tokenizer.h"
 #include "parser.h"
 
@@ -12,37 +13,18 @@ class Han {
 
 
 
-int main(){
-	string c = "(setq han 5) (love (+ han 4) (print han 7)) ";
+int main(int argc, char **argv){
+	string source_code;
+	string filename = argv[1];
+	ifstream source;
+	source.open(filename);
+	string source_line;
+	while(getline(source, source_line)){
+		source_code += source_line;
+	}
 	Tokenizer myTokenizer;
-	token_vector tv = myTokenizer.tokenize(c);
+	token_vector tv = myTokenizer.tokenize(source_code);
 	Parser myParser;
 	vector<Node*> body = myParser.parse(tv);
-	// for(Token tk : tv){
-	// 	switch(tk.token_type){
-	// 		case TokenType::ARITHMETIC:
-	// 			cout<<"[Arithmetic]";
-	// 			break;
-	// 		case TokenType::BRACKET_CLOSE:
-	// 			cout<<"[Bracket Close]";
-	// 			break;
-	// 		case TokenType::BRACKET_OPEN:
-	// 			cout<<"[Bracket Open]";
-	// 			break;
-	// 		case TokenType::NUMBER_LITERAL:
-	// 			cout<<"[Number]";
-	// 			break;
-	// 		case TokenType::STRING_LITERAL:
-	// 			cout<<"[String]";
-	// 			break;
-	// 		case TokenType::VARIABLE:
-	// 			cout<<"[Variable]";
-	// 			break;
-	// 		case TokenType::RESERVED_KEYWORD:
-	// 			cout<<"[Reserved]";
-	// 			break;
-	// 	}
-	// 	cout<<" " << tk.token_value<< " ";
-	// }
 	return 0;
 }
